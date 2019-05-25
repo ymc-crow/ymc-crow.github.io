@@ -1,0 +1,18 @@
+<div class="tree-posts">
+
+    <h3>javascripts</h3>
+    {{site.categories[0]]}} 
+    {% for post in site.posts %}
+    {% if post.path contains 'javascripts' %}
+        <article role="article" class="post-item" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+            <div class="content">
+                <a title="Open the post" href="{{ post.url | prepend: site.baseurl }}">
+                    <h2 class="post-title" itemprop="name">{{ post.title | replace: ' ','-'}}.md</h2>
+                </a>
+            </div>
+        </article>
+    {% endif %}
+    {% endfor %}
+    
+
+</div>
