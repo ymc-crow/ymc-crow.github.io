@@ -45,7 +45,10 @@ links:
       key_trigger: js  
     - title: python
       url: /python
-      key_trigger: py  
+      key_trigger: py
+    - title: pe-기술사문제
+      url: /pro_engineer
+      key_trigger: pe
 
 # projects in header index
 projects:
