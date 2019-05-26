@@ -5,14 +5,13 @@ permalink: /about/index.html
 description: "Some description about Victor Igor..."
 ---
 
-<img itemprop="image" class="img-rounded about_perfil" src=" https://68.media.tumblr.com/93f384858e9273d5b980b418e2f2f4d5/tumblr_o5i2aybLJG1uapsfmo2_250.png" alt="My profile">
+<img itemprop="image" class="img-rounded about_perfil" src="/assets/img/me.jpg" alt="My profile">
 
-<h2>My projects</h2>
+<h4>WEB개발자<br>티비 플랫폼 기반 WEBAPP개발<br>WEB 프론트엔드,백엔든<br>안드로이드<br>
+	정보통신공학과<br>
+	java,javascript,nodejs,html,css,python,c,database,aws...<br>
+	<br>
+	영화,음악,만화,유튜브 등 미디어의 노예<br>
+	게임,등산,맛집 등 좋아함<br>
+	메탈음악을 사랑하는 metalhead<br></h4>
 
-<div class="aboutme">
-	<ul class="recent">
-		{% for project in site.projects %}
-	    	<li><a href="{{ project.url}}"><h3 class="project-name" itemprop="name">{{ project.name }}</h3></a></li>
-	    {% endfor %}
-	</ul>
-</div>
