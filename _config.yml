@@ -40,8 +40,8 @@ links:
       url: /posts
       key_trigger: 3
   section_2:
-    - title: JavaScript
-      url: /javaScript
+    - title: javascript
+      url: /javascript
       key_trigger: js  
     - title: python
       url: /python
