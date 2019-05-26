@@ -33,15 +33,12 @@ links:
     - title: home
       url: /
       key_trigger: 1
-    - title: series
-      url: /series
-      key_trigger: 2
     - title: about me
       url: /about
-      key_trigger: 3
+      key_trigger: 2
     - title: every post
       url: /posts
-      key_trigger: 4
+      key_trigger: 3
   section_2:
     - title: JavaScript
       url: /javaScript
