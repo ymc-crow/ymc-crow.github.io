@@ -1,0 +1,30 @@
+---
+layout: minimal
+title: "html_css"
+image: '/assets/img/series.png'
+description: "Take a look at my series..."
+---
+
+<h2>html_css</h2>
+{% for tag in site.categories %}
+    {% if tag[1][0].path contains 'html_css' %}
+    <span class="tag-title" id="{{ tag[0] | slugify }}">{{ tag[0] | capitalize }}</span>
+    {% endif %}
+    <ul class="post-list">
+        {% assign pages_list = tag[1] %}
+        {% for post in pages_list reversed %}
+        {% if post.title != null and post.path contains 'html_css' %}
+        {% if group == null or group == post.group %}
+        <li>
+            <a title="Post's my title" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}
+                <span class="entry-date">
+                <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}</time>
+            </a>
+        </li>
+        {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% assign pages_list = nil %}
+    {% assign group = nil %}
+    </ul>
+{% endfor %}

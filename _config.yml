@@ -42,7 +42,10 @@ links:
   section_2:
     - title: javascript
       url: /javascript
-      key_trigger: js  
+      key_trigger: js
+    - title: html_css
+      url: /html_css
+      key_trigger: fe  
     - title: python
       url: /python
       key_trigger: py
