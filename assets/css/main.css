@@ -1033,6 +1033,10 @@ body {
     text-align: center;
     color: #fff
 }
+.header-post p a {
+    color: #fff;
+    text-decoration: none;
+}
 
 .page-header {
     height: 62px;
@@ -1496,7 +1500,7 @@ table {
 
 @media only screen and (max-width:37.5rem) {
     table {
-        display: none
+        /*display: none*/
     }
 }
 
