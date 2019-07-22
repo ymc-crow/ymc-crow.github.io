@@ -52,6 +52,9 @@ links:
     - title: pe-기술사문제
       url: /pro_engineer
       key_trigger: pe
+    - title: interview
+      url: /interview
+      key_trigger: iv
 
 # projects in header index
 projects:
