@@ -1,5 +1,5 @@
 # Site settings
-title: YMC - Web Developer
+title: YMC - Web Developer!
 description: "YMC 기술블로그"
 baseurl: "" # for test: remove string '/space-jekyll-template' to ''
 url: "https://ymc-crow.github.io" # for test: remove string 'http://victorvoid.github.io' to '' but in production: 'https://yourusername.github.io'
