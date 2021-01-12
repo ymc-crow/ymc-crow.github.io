@@ -270,7 +270,7 @@ printer의 print메써드를 호출하고 이 안에서 반복적으로 다시 p
 withSource함수는 map의 여부에 따라서 바로 printMethod를 호출할지 말지 결정된다. map이 있다면 추가 작업후 printMethod를 호출한다. 이 printMethod는 node의 타입과 동일한 함수명을 가진다. 예를 들면 File 타입은 Base.js에 있는 File함수를 호출한다. File 함수는 File의 자식인 Program Node를 루트로 갖는 ast를 인자로 print 메서드를 호출한다.
 
 다음은 VariableDeclatrion 타입이다.
-![print VariableDeclartion](/assets/img/babel/2020-12-28-2020-12-28-printVariableDeclarion.png){: width="1000" height="500"}
+![print VariableDeclartion](/assets/img/babel/2020-12-28-printVariableDeclarion.png){: width="1000" height="500"}
 
 Statements.js파일의 VariableDeclatrion 함수를 통해 최초로 const가 buffer에 push됨을 알수 있다.
 ![push const](/assets/img/babel/2020-12-28-constPush.png){: width="1000" height="500"}
