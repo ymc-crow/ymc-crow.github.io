@@ -107,7 +107,7 @@ webpack/bin/webpack.js -> webpack-cli/bin/cli.js -> webpack/lib/Compiler.js -> w
 NomarlModule 객체 생성시 loaders 멤버에 babel-loader가 들어간다. 그 후 doBuild 메소드를 통해 babel-lodaer의
 loader메소드가 반환되고 loader-runner 모듈을 통해 실행된다.
 
-![Chrome Dev tool 화면](/assets/img/babel/2020-12-28-babel1.png){: width="1000" height="500"}
+![Chrome Dev tool 화면](/assets/img/babel/2020-12-28-babel1.png){: width="1200" height="700"}
 
 <br>
 #이제 babel 동작과정을 살펴보자<br> 그전에 아래 링크를 먼저 보면 좋다. 바벨팀에서 직접 설명하는 영상이다.
@@ -124,8 +124,8 @@ loader메소드가 반환되고 loader-runner 모듈을 통해 실행된다.
 babel-loader/lib/index.js -> babel-loader/lib/transform.js -> @babel/core/lib/transform.js -> @babel/core/lib/transform.js -> @babel/core/lib/transformation/index.js -> @babel/core/lib/transformation/normalize-file.js
 
 normalize-file.js에서 parser 호출하는 부분이다.<br>
-![parser 호출하는 부분](/assets/img/babel/2020-12-28-babel-parser-call.png){: width="1000" height="500"}
-![parser 모듈 세팅되는부분](/assets/img/babel/2020-12-28-babel-parser-call2.png){: width="1000" height="500"}
+![parser 호출하는 부분](/assets/img/babel/2020-12-28-babel-parser-call.png){: width="1200" height="700"}
+![parser 모듈 세팅되는부분](/assets/img/babel/2020-12-28-babel-parser-call2.png){: width="1200" height="700"}
 
 <h2>1. parse : 텍스트로 된 코드를 node로 된 ast(abstract syntax tree)로 바꾸는 과정</h2>
 
@@ -136,7 +136,7 @@ babel이 node로 된 ast를 만드는 시작점이다. : [babel-parser 깃허브
 
 @babel/parser/lib/index.js의 parse() 함수가 실행된다. parse 함수 안에서는 getParser에서 StatementParser를 상속받은 Parser를 선택하고 Parser의parse를 호출한다.
 
-![parser의 parse](/assets/img/babel/2020-12-28-babel-parser-call3.png){: width="1000" height="500"}
+![parser의 parse](/assets/img/babel/2020-12-28-babel-parser-call3.png){: width="1200" height="700"}
 
 깃허브 원본소스: [parser의 parse] (https://github.com/babel/babel/blob/main/packages/babel-parser/src/parser/index.js#L48
 
@@ -159,7 +159,7 @@ tokenizer의 nextToken함수로 문자들을 토큰화 한다. 문자 하나씩 
 
 토큰화 과정 스크린샷
 
-![toknizer process](/assets/img/babel/2020-12-28-tokenizer process.png){: width="1000" height="500"}
+![toknizer process](/assets/img/babel/2020-12-28-tokenizer process.png){: width="1200" height="700"}
 
 이 예제에서는 jsx plugin이 사용되어서 this.getTokenFromCode이 jsx plugin 객체의 것이다.
 
@@ -169,7 +169,7 @@ tokenizer의 nextToken함수로 문자들을 토큰화 한다. 문자 하나씩 
 
 jsx 구문은 tokContext의 token값에 따라 여는 태그 <tag , 닫는 태그 </tag , 태그내 내용 <tag>...</tag> 으로 분기 된다. div같은 경우는 jsxReadWord함수에서 얻는다.
 
-![jsx의 토큰화](/assets/img/babel/2020-12-28-jsx-tokenizer.png){: width="1000" height="500"}
+![jsx의 토큰화](/assets/img/babel/2020-12-28-jsx-tokenizer.png){: width="1200" height="700"}
 
 const App = () => <div>홀홀</div>;
 
@@ -177,13 +177,13 @@ const App = () => <div>홀홀</div>;
 
 콘솔에 parse전 비어있는 node를 찍어놨다 finishNode 시점과 비교 가능하다.
 
-![parseStatement의 결과물](/assets/img/babel/2020-12-28-parse-output.png){: width="1000" height="500"}
+![parseStatement의 결과물](/assets/img/babel/2020-12-28-parse-output.png){: width="1200" height="700"}
 
 최종적으로는 file.prgram.body에 이 node가 들어가게 된다(File 타입은 ast의 최상위 node). 이때 body는 node들의 array인데 이 array의 length는 index.js의 문의 갯수와 같다. 만약 import문과 export문을 추가 하면 body.length는 3이다.
 
 생성된 ast와 코드 원본 옵션 등을 이용하여 최상위 File 객체를 만들게 된다.
 
-![File 객체 생성](/assets/img/babel/2020-12-28-FILE_class.png){: width="1000" height="500"}
+![File 객체 생성](/assets/img/babel/2020-12-28-FILE_class.png){: width="1200" height="700"}
 
 이때 생성된 File의 path를 세팅하기위해 1차적으로 node들을 traverse힌다.
 
@@ -202,15 +202,15 @@ https://github.com/babel/babel/blob/f697e7995d389b38fb2339e41eedd6fdce6dc014/pac
 
 visitor는 각 노드를 방문했을때 그 노드타입에따라 수행해야될 일이라 생각하면 된다.collectorVisitor를통해 초기 scope를 만든다.
 
-![초기 scope](/assets/img/babel/2020-12-28-initial_scope.png){: width="1000" height="500"}
+![초기 scope](/assets/img/babel/2020-12-28-initial_scope.png){: width="1200" height="700"}
 
 traverse는 깊이 우선 알고리즘 순회하고 node 방문때 enter단계, 노드의 자식까지 모두 방문하고 나오면 exit단계이다. 방문 node에 대한 작업은 enter 혹은 exit단계일때 이루어진다. 이는 노드 타입에 따라 다르다.
 
 traverse 전과 후의 ast를 비교해보자<br>
 
-![traverse 전](/assets/img/babel/2020-12-28-jsx_traverse_before.png){: width="1000" height="500"}
+![traverse 전](/assets/img/babel/2020-12-28-jsx_traverse_before.png){: width="1200" height="700"}
 
-![traverse 후](/assets/img/babel/2020-12-28-jsx_traverse_after.png){: width="1000" height="500"}
+![traverse 후](/assets/img/babel/2020-12-28-jsx_traverse_after.png){: width="1200" height="700"}
 
 jsxElement가 React.createElement 함수 호출로 변환됬다.
 이제 과정을 살펴보자<br>
@@ -221,7 +221,7 @@ jsxElement 노드의 경우는 exit단계에서 작업이 이루어진다.
 
 visit 메소드에서 exit단계에서 수행해야하는 함수를 call 한다.
 
-![call시점 캡처](/assets/img/babel/2020-12-28-jsx-tokenizer.png){: width="1000" height="500"}
+![call시점 캡처](/assets/img/babel/2020-12-28-jsx-tokenizer.png){: width="1200" height="700"}
 visitor.jsxElement도 확인할수 있다. exit시점에 동작하므로 exit메서드가 정의되 있다.
 
 [visitor.jsxElement](https://github.com/babel/babel/blob/b649f8d192dd1c62e2a31d856a7c39ff21d70dd5/packages/babel-helper-builder-react-jsx/src/index.js#L34)
@@ -231,17 +231,17 @@ babel-loader 설정에서 '@babel/preset-react'를 사용하기로 하였다.
 
 @babel/preset-react는 config를 로드하는 과정에서 호출되고 @babel/plugin-transform-react-jsx가 import된다.
 
-![plugin-transform-react-jsx](/assets/img/babel/2020-12-28-plugin_transform-react-jsx.png){: width="1000" height="500"}
+![plugin-transform-react-jsx](/assets/img/babel/2020-12-28-plugin_transform-react-jsx.png){: width="1200" height="700"}
 
 스크린샷을 보면 runtime 옵션에 따라 분기된다. default 값은 classic이므로 transform-classic.js 파일이 호출된다. 만약 babel-preset-env설정에 runtime: automatic으로 하면 "react/jsx-runtime"를 사용하여 react를 모든 파일에 import하지 않고도 jsx를 사용할수 있다. 이는 비교적 최신버전의 react와 babel버전에서 유효하므로 사용하고 싶다면 검색하여 버전을 체크하자.eslint는 "react/react-in-jsx-scope": "off"로 설정하여 빨간줄 에러를 없앤다<br>
 
-![transfrom-classic](/assets/img/babel/2020-12-28-transform-classic.png){: width="1000" height="500"}
+![transfrom-classic](/assets/img/babel/2020-12-28-transform-classic.png){: width="1200" height="700"}
 이 파일에서 jsx함수가 함수호출로 칠환될때 사용될 React.createElement를 확인할수 있다.
 
 automatic인 경우는 react/jsx-runtime 의 jsx함수이다. @babel/helper-builder-react-jsx도 이 파일을 통해 visitor로 추가됨을 확인할수 있다.
 
 @babel/traverse/lib/path/replacement.js 파일의 replaceWith에서 oldNode는 replacement로 대체된다.
-![repacement](/assets/img/babel/2020-12-28-jsxElementRplace.png){: width="1000" height="500"}
+![repacement](/assets/img/babel/2020-12-28-jsxElementRplace.png){: width="1200" height="700"}
 
 위와같이 traverse과정에서 모든노드들은 알맞은 visitor의 함수를 통해 update된다.
 
@@ -249,7 +249,7 @@ automatic인 경우는 react/jsx-runtime 의 jsx함수이다. @babel/helper-buil
 <h2>3. generate : 생성된 ast로 변경된 code 생성</h2>
 
 @babel/core/lib/transformation/index.js 에서 generator의 generate호출
-![generate call](/assets/img/babel/2020-12-28-generate-call.png){: width="1000" height="500"}
+![generate call](/assets/img/babel/2020-12-28-generate-call.png){: width="1200" height="700"}
 
 generate는 @babel/generator/lib/index.js에서 부터 시작된다.
 
@@ -262,18 +262,18 @@ generate는 @babel/generator/lib/index.js에서 부터 시작된다.
 [buffer클래스의 _append 함수](https://github.com/babel/babel/blob/fce3e7124a2d6bef323a3982ded9c752054992ef/packages/babel-generator/src/buffer.js#L111)
 
 ast의 root는 File 타입이다.
-![generate method](/assets/img/babel/2020-12-28-ingenerate.png){: width="1000" height="500"}
+![generate method](/assets/img/babel/2020-12-28-ingenerate.png){: width="1200" height="700"}
 
 printer의 print메써드를 호출하고 이 안에서 반복적으로 다시 print를 호출하며 buffer를 채운다.
-![print method](/assets/img/babel/2020-12-28-ingenerate.png){: width="1000" height="500"}
+![print method](/assets/img/babel/2020-12-28-ingenerate.png){: width="1200" height="700"}
 
 withSource함수는 map의 여부에 따라서 바로 printMethod를 호출할지 말지 결정된다. map이 있다면 추가 작업후 printMethod를 호출한다. 이 printMethod는 node의 타입과 동일한 함수명을 가진다. 예를 들면 File 타입은 Base.js에 있는 File함수를 호출한다. File 함수는 File의 자식인 Program Node를 루트로 갖는 ast를 인자로 print 메서드를 호출한다.
 
 다음은 VariableDeclatrion 타입이다.
-![print VariableDeclartion](/assets/img/babel/2020-12-28-printVariableDeclarion.png){: width="1000" height="500"}
+![print VariableDeclartion](/assets/img/babel/2020-12-28-printVariableDeclarion.png){: width="1200" height="700"}
 
 Statements.js파일의 VariableDeclatrion 함수를 통해 최초로 const가 buffer에 push됨을 알수 있다.
-![push const](/assets/img/babel/2020-12-28-constPush.png){: width="1000" height="500"}
+![push const](/assets/img/babel/2020-12-28-constPush.png){: width="1200" height="700"}
 
 중간에 보면 this.space()가 보이는데 말그대로 buffer에 공백을 push한다.
 
@@ -281,9 +281,9 @@ VariableDeclatrion안에서는 node.declarations를 인자로 print함수를 호
 VariableDeclator -> ArrowFunctionExpression 그후 Identifier -> init -> Callexpression -> MemberExpression ... 계속 각 node의 자식으로 가지고 있는 node타입의 이름으로 함수가 호출되며 buffer를 채운다. 방대한양의 case를 모두 코드로 구현해 놓았다. 각 노드에 대한 작업은 stack으로 관리된다. 새로운 node를 print하기 전에 스택에 넣어놓고 자식 node들 까지 모두 print가 끝나면 pop한다. 이 스택의 명칭은 printer 클래스에서 _printStack이다.
 
 최종 결과물이다.
-![generate result](/assets/img/babel/2020-12-28-generate-result.png){: width="1000" height="500"}
+![generate result](/assets/img/babel/2020-12-28-generate-result.png){: width="1200" height="700"}
 
 bonus : /*#__PURE__*/ annotation은 어디서 붙는걸까?
 
-![generate result](/assets/img/babel/2020-12-28-pureAnnotation.png){: width="1000" height="500"}
+![generate result](/assets/img/babel/2020-12-28-pureAnnotation.png){: width="1200" height="700"}
 각 node를 프린트할때 leadingComments라는 프로퍼티 또한 프린트 하는데 그때 생성된다. 그러면 #__PURE__는 어디서 오는걸까? 앞서 traverse에서 언급했던 @babel/helper-builder-react-jsx을 보면 @babel/helper-annotate-as-pure를 가져다 쓰고 이 안에 <code>const PURE_ANNOTATION = "#__PURE__";</code>로 정의되있다.
