@@ -70,17 +70,17 @@ mappings의 ,를 구분자로 하나의 segment라고 부른다. 세그먼트는
 그렇다면 그냥 숫자로 표현될것이 왜 AAAA,IAAM 같은 형태가 되었나?
 VLQ와 base64 인코딩이 사용되었기 때문이다. base64 VLQs가 사용되는 이유는 segment의 길이를 줄이기 위해서다.
 
-vlq:[reason](https://en.wikipedia.org/wiki/Variable-length_quantity)
-base64 사용이유 : [reason]https://devuna.tistory.com/41
-자세한 설명 : [detail](https://pvdz.ee/weblog/281)
+vlq:[vlq](https://en.wikipedia.org/wiki/Variable-length_quantity)<br>
+base64 사용이유 : [bas64]https://devuna.tistory.com/41<br>
+자세한 설명 : [detail](https://pvdz.ee/weblog/281)<br>
 
-!중요 : 얼핏보면 알파벳 하나가 숫자 하나에 대응한다고 생각할수 있는데 아니다. base64인코딩표에서 g이상의 숫자들은 contiunation bit를 가지므로 뒤의 문자를 계속적으로 체크하고 g이하의 숫자가 나올때가 비로소 하나의 숫자가 완성된다.
+!중요! : 얼핏보면 알파벳 하나가 숫자 하나에 대응한다고 생각할수 있는데 아니다. base64인코딩표에서 g이상의 숫자들은 contiunation bit를 가지므로 뒤의 문자를 계속적으로 체크하고 g이하의 숫자가 나올때가 비로소 하나의 숫자가 완성된다.
 
 그외 참고자료 : [good data]
-(https://www.lucidchart.com/techblog/2019/08/22/decode-encoding-base64-vlqs-source-maps/)
+(https://www.lucidchart.com/techblog/2019/08/22/decode-encoding-base64-vlqs-source-maps/)<br>
 
 소스맵을 직접 해석해본 사람(이해하는데 아주 좋음)
-https://github.com/Rich-Harris/vlq/blob/master/sourcemaps/README.md
+https://github.com/Rich-Harris/vlq/blob/master/sourcemaps/README.md<br>
 
 
 
