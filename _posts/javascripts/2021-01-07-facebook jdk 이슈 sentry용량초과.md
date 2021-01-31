@@ -34,7 +34,7 @@ https://connect.facebook.net/signals/config/1506050232762893?v=2.9.32&r=stable
 
 2.9.32 버젼에서는 다시 2번째 인자가 들어감을 확인!!
 
-**결국 facebook jdk 소스 문제다!!**
+**결국 facebook 소스 문제다!!**
 
 해결법은??
 
