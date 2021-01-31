@@ -18,7 +18,7 @@ categories:
 
 용량을 채운 대부분의 에러는 아래 스크린샷과 같다.
 
-![센트리 캡처화면](/assets/img/babel/2021-01-07-sentry.png){: width="600" height="400"}
+![센트리 캡처화면](/assets/img/2021-01-07-sentry.png){: width="600" height="400"}
 
 window.postMessage의 두번째 인자가 없다고 나온 에러다. 두번째 인자는 필수인자다.
 그리고 이 소스는 페이스북 픽셀코드에서 비동기로 가져다 쓰는 소스다.
