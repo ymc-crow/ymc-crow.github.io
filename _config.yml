@@ -58,6 +58,8 @@ links:
 
 # projects in header index
 projects:
+  - name: ymc-vanilaJS-module
+    url: https://github.com/ymc-crow/ymc-vanilaJS-module
   - name: jekyll + github로 기술블로그 만들기
     url: https://github.com/ymc-crow/ymc-crow.github.io
 
