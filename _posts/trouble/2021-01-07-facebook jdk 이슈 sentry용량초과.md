@@ -5,7 +5,7 @@ title:  "sentry용량 초과..facebook도 실수를!?"
 image: ''
 date:   2021-01-07 00:00:00
 tags:
-- javascripts
+- trouble
 description: ''
 categories:
 - basic

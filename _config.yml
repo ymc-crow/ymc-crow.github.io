@@ -46,6 +46,10 @@ links:
     - title: html_css
       url: /html_css
       key_trigger: fe  
+    - title: trouble
+      url: /trouble
+      key_trigger: tr
+  section_3:
     - title: python
       url: /python
       key_trigger: py

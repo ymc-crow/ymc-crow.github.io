@@ -1,19 +1,19 @@
 ---
 layout: minimal
-title: "Interview"
+title: "trouble"
 image: '/assets/img/series.png'
 description: "Take a look at my series..."
 ---
 
-<h2>Interview</h2>
+<h2>Trouble</h2>
 {% for tag in site.categories %}
-    {% if tag[1][0].path contains 'interview' %}
+    {% if tag[1][0].path contains 'trouble' %}
     <span class="tag-title" id="{{ tag[0] | slugify }}">{{ tag[0] | capitalize }}</span>
     {% endif %}
     <ul class="post-list">
     {% assign pages_list = tag[1] %}
     {% for post in pages_list reversed %}
-      {% if post.title != null and post.path contains 'interview' %}
+      {% if post.title != null and post.path contains 'trouble' %}
       {% if group == null or group == post.group %}
       <li>
           <a title="Post's my title" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}
