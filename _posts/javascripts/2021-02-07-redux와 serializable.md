@@ -29,7 +29,7 @@ react-redux를 쓰다가 recoil을 쓰니 recoil에서는 function,promise이나
 
 직렬화 부터 알아보자
 
-<h1>직렬화란(serialize)?</h2>
+<h2>직렬화란(serialize)?</h2>
 
 javascript에서 사용하는 데이터 타입은 주로 object이다. 하지만 이 자바스크립트 오브젝트가 다른 언어나 다른환경에서도 똑같이 사용될수 있을까? 간단한 예로는 localstorage가 있다. localstorage는 값으로 string을 가질수 있지만 object는 가질수 없다. 이럴때 우리는 json.stringify를 통해서 object를 스트링화 한다. 이것이 직렬화다. 그리고 다시 꺼내쓸때는 스트링은 json.parse하여 오브젝트로 다시 변환한다 이것이 역직렬화다.이때 직렬화 전 object와 역직렬화된 object는 같아야 한다.
 
@@ -47,7 +47,7 @@ redux-devtool: serialize, stringify로 둘다 검색됨
 [react dev tools search serialize](https://github.com/reduxjs/redux-devtools/search?q=serialize)
 
 
-<h1>결론</h1>
+<h2>결론</h2>
 
 위 스택오버플로 링크에서도 봤듯이 데이터 일관성을 잘 유지할수있고 react-devtools 혹은 다른 redux 미들웨어들을 사용할때 오류를 감당할 자신이 있으면 non-serializable 타입의 데이터를 저장해도 된다.
 
