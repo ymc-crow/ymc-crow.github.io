@@ -15,12 +15,14 @@ categories:
 proxy와 decorator를 사용하면 어떠한 함수를 실행할때 그 함수는 변경하지 않고 그 함수의 앞이나 뒤로 어떠한 추가행동이 가능하다.
 
 ```js
-class test {
-    constructor(x, y) {
+class Test {
+    x: number;
+    y: number;
+    constructor(x:number, y:number) {
         this.x = x;
         this.y = y;
     }
-    dist(other) {
+    dist(other: Test) {
         return Math.sqrt(
             (other.x-this.x)**2 + (other.y-this.y)**2);
     }
@@ -106,10 +108,10 @@ wrapping하지 않고 클래스 단에서 변경이 가능하진 않을까?
 
 ```js
 function log(target: Function) {
-    for (const propertyName of Object.keys(target.prototype)) {
+    for (const propertyName of Object.getOwnPropertyNames(target.prototype)) {
         const descriptor = Object.getOwnPropertyDescriptor(target.prototype, propertyName);
-        const isMethod = descriptor.value instanceof Function;
-        if (!isMethod)
+        const isMethod = descriptor?.value instanceof Function;
+        if (!isMethod || !descriptor)
             continue;
 
         const originalMethod = descriptor.value;
