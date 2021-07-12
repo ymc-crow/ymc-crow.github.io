@@ -3,7 +3,7 @@ layout: post
 comments : true
 title:  "proxy와 decorator"
 image: ''
-date:   2021-03-28 00:06:31
+date:   2021-07-11 00:06:31
 tags:
 - javascripts
 description: ''
