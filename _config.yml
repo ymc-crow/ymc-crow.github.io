@@ -53,9 +53,6 @@ links:
     - title: python
       url: /python
       key_trigger: py
-    - title: pe-기술사문제
-      url: /pro_engineer
-      key_trigger: pe
     - title: interview
       url: /interview
       key_trigger: iv
